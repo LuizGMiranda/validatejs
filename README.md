@@ -7,20 +7,23 @@ Link para testes: https://luizgmiranda.github.io/validatejs/
         <div id='form_msg' style="display:none" role="alert">
         </div>
         <form name='form' id='form'>
-            <label>Nome:</label>
-            <input name="nome" id="form_nome" type="text"><br/>
-            <label>Email:</label>
-            <input id="form_email" type="email"><br/>
-            <label>CPF:</label>
-            <input name="cpf" id="form_cpf" type="text"><br/>
-            <label>CNPJ:</label>
-            <input name="cnpj" id="form_cnpj" type="text"><br/>
-            <label>Moeda:</label>
-            <input name="moeda" id="form_moeda" type="number"><br/>
-            <label>Valor:</label>
-            <input name="valor" id="form_valor" type="number"><br/>
-            <br/>
-            <input type="button" type="submit" onclick="validaCampos()" value="Validar">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input name="nome" class="form-control" id="form_nome" type="text">
+                <label>Telefone:</label>
+                <input name="telefone" class="form-control" id="form_telefone" type="text" maxlength="15">
+                <label>Email:</label>
+                <input name="email" class="form-control" id="form_email" type="email">
+                <label>CPF:</label>
+                <input name="cpf" class="form-control" id="form_cpf" type="text" maxlength="11">
+                <label>CNPJ:</label>
+                <input name="cnpj" class="form-control" id="form_cnpj" type="text" maxlength="15">
+                <label>Moeda:</label>
+                <input name="moeda" class="form-control" id="form_moeda" type="text">
+                <label>Valor:</label>
+                <input name="valor" class="form-control" id="form_valor" type="text">
+                <input type="button" type="submit" onclick="validaCampos()" value="Validar">
+            </div>
         </form>
     </body>
 
@@ -33,8 +36,16 @@ Link para testes: https://luizgmiranda.github.io/validatejs/
  - ~~Moeda~~ *(em breve)*
  - ~~Valor~~ *(em breve)*
 
-#### Próximos Passos:
- - Colocar mascaras nos campos
- - Melhorar validação de alguns campos
+#### Mascaras
+ - Telefone
+ - CPF
+ - CNPJ
+ - Moeda
 
+#### Próximos Passos:
+ - ~~Colocar mascaras nos campos~~
+ - Melhorar validação de alguns campos
+ - Ajustar mensagens
+ - Fazer valiadção de mais campos
+ - Fazer todas as mascaras
 
