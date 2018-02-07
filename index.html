@@ -20,16 +20,18 @@
             <div class="form-group">
                 <label>Nome:</label>
                 <input name="nome" class="form-control" id="form_nome" type="text">
+                <label>Telefone:</label>
+                <input name="telefone" class="form-control" id="form_telefone" type="text" maxlength="15">
                 <label>Email:</label>
                 <input name="email" class="form-control" id="form_email" type="email">
                 <label>CPF:</label>
-                <input name="cpf" class="form-control" id="form_cpf" type="text">
+                <input name="cpf" class="form-control" id="form_cpf" type="text" maxlength="11">
                 <label>CNPJ:</label>
-                <input name="cnpj" class="form-control" id="form_cnpj" type="text">
+                <input name="cnpj" class="form-control" id="form_cnpj" type="text" maxlength="15">
                 <label>Moeda:</label>
-                <input name="moeda" class="form-control" id="form_moeda" type="number">
+                <input name="moeda" class="form-control" id="form_moeda" type="text">
                 <label>Valor:</label>
-                <input name="valor" class="form-control" id="form_valor" type="number">
+                <input name="valor" class="form-control" id="form_valor" type="text">
                 <input type="button" type="submit" onclick="validaCampos()" value="Validar">
             </div>
         </form>
