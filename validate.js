@@ -71,6 +71,7 @@ function validaVazioNulo(atr){
     } else
         return true;
 }
+
 function ehEmail(atr){
     var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/ ;
     if (!reg.test(atr.value)){
@@ -101,7 +102,7 @@ function ehCpf(atr){
 
 function ehCnpj(atr){
     var cnpj = atr.value.replace(/[^\d]+/g,'');
-    if( cpf.length == 14 ||
+    if( cnpj.length == 14 ||
         cnpj != "00000000000" ||
         cnpj != "11111111111" ||
         cnpj != "22222222222" ||
@@ -118,6 +119,7 @@ function ehCnpj(atr){
         montaMsg(atr);
 }
 
+// Animação mensagem de erro e sucesso
 function fade(id, time, ini, fin) {
     var target = document.getElementById(id);
     var alpha = ini;
@@ -141,4 +143,62 @@ function fade(id, time, ini, fin) {
 function setAlpha(target, alpha) {
     target.style.filter = "alpha(opacity="+ alpha +")";
     target.style.opacity = alpha/100;
+}
+
+
+//Mascaras
+function pegaId( el ){
+	return document.getElementById( el );
+}
+
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execMascara()",1)
+}
+function execMascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mascaraTelefone(v){
+    v=v.replace(/\D/g,"");                  //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+
+function mascaraCpf(v){
+    v=v.replace(/\D/g,"");
+    v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4"); 
+    return v;
+}
+
+function mascaraCnpj(v){
+    v=v.replace(/\D/g,"");     
+    v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1 $2 $3/$4-$5"); 
+    return v;
+} 
+
+function mascaraMoeda(v){    
+    v=v.replace(/\D/g,"") // permite digitar apenas numero 
+    v=v.replace(/(\d{1})(\d{17})$/,"$1.$2") // coloca ponto antes dos ultimos digitos 
+    v=v.replace(/(\d{1})(\d{13})$/,"$1.$2") // coloca ponto antes dos ultimos 13 digitos 
+    v=v.replace(/(\d{1})(\d{10})$/,"$1.$2") // coloca ponto antes dos ultimos 10 digitos 
+    v=v.replace(/(\d{1})(\d{7})$/,"$1.$2") // coloca ponto antes dos ultimos 7 digitos 
+    v=v.replace(/(\d{1})(\d{1,2})$/,"$1,$2") // coloca virgula antes dos ultimos 4 digitos 
+    return v;
+} 
+
+window.onload = function(){
+	pegaId('form_telefone').onkeyup = function(){
+		mascara( this, mascaraTelefone );
+    }
+    pegaId('form_cpf').onkeyup = function(){
+		mascara( this, mascaraCpf );
+    }
+    pegaId('form_cnpj').onkeyup = function(){
+		mascara( this, mascaraCnpj );
+    }
+    pegaId('form_moeda').onkeyup = function(){
+		mascara( this, mascaraMoeda );
+	}
 }
