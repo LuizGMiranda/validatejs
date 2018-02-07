@@ -1,13 +1,7 @@
-/*
-    Para validar usar os ids
-    #form_nome para Nome
-    #form_email para Email
-    #form_cpf para CPF
-    #form_cnpj para CNPJ
-    #form_moeda para Dinheiro
-    #form_valor para Inteiro
-*/
+// TODO fazer mascara para os campos
 
+
+//Set Ids 
 document.addEventListener("DOMContent", function () {
 var form_nome = document.getElementById('#form_nome');
 var form_email = document.getElementById('#form_email');
@@ -17,13 +11,28 @@ var form_moeda = document.getElementById('#form_moeda');
 var form_valor = document.getElementById('#form_valor');
 });
 
+function validaCampos(){
+    console.log("Estou verificando");
 
-//Validação de Email
-var exclude=/[^@-.w]|^[_@.-]|[._-]{2}|[@.]{2}|(@)[^@]*1/;
-var check=/@[w-]+./;
-var checkend=/.[a-zA-Z]{2,3}$/;
+    if(validaVazioNulo(form_nome)!=true){
+        return false;
+    }
 
-function verificaName(atr){
+    if(validaVazioNulo(form_email)!=true || ehEmail(form_email)!=true){
+        return false;
+    }
+
+    if(validaVazioNulo(form_cpf)!=true || ehCpf(form_cpf)!=true){
+        return false;
+    }
+    
+    else {
+        console.log("Enviado com sucesso");
+    }
+};
+
+
+function montaMsg(atr){
     var msg;
     atr.name ? msg = ("Valor incorreto, preencha corretamente o campo " + atr.name + "!") : msg = ("Valor incorreto, preencha corretamente o campo!");
     alert(msg); // TROCAR PARA MSG EM TELA
@@ -32,25 +41,34 @@ function verificaName(atr){
 
 function validaVazioNulo(atr){
     if(atr.value == '' || atr.value === undefined || atr.value === null){
-        verificaName(atr);
+        montaMsg(atr);
+    } else
+        return true;
+}
+function ehEmail(atr){
+    var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/ ;
+    if (!reg.test(atr.value)){
+        montaMsg(atr);;
+    } else{
+        return true;
     }
 }
 
-function validaCampos(){
-    console.log("Estou verificando");
-
-    if(form_nome){
-        validaVazioNulo(form_nome);
-    }
-
-    validaEmail();
-    
-};
-
-function validaEmail(){
-    validaVazioNulo(form_email);
-    
-    if(form_email.value == ''|| form_email.value === undefined || form_email.value === null){
-        return false;
-    }
+function ehCpf(atr){
+    var cpf = atr.value.replace(/[^\d]+/g,'');
+    if(
+        cpf != "00000000000" ||
+        cpf != "11111111111" ||
+        cpf != "22222222222" ||
+        cpf != "33333333333" ||
+        cpf != "44444444444" ||
+        cpf != "55555555555" ||
+        cpf != "66666666666" ||
+        cpf != "77777777777" ||
+        cpf != "88888888888" ||
+        cpf != "99999999999"
+    ){
+        return true;
+    } else
+        montaMsg(atr);
 }
