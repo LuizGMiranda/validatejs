@@ -31,7 +31,7 @@ Link para testes: https://luizgmiranda.github.io/validatejs/
  - CPF (básico, apenas se tem 11 dígitos e diferente de números iguais)
  - CNPJ  (básico, apenas se tem 14 dígitos e diferente de números iguais)
  - ~~Moeda~~ *(em breve)*
- - *Valor* *(em breve)*
+ - ~~Valor~~ *(em breve)*
 
 #### Próximos Passos:
  - Colocar mascaras nos campos
