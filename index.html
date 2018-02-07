@@ -1,15 +1,29 @@
-<html>
+<!doctype html>
+<html lang="pt_BR">
     <head>
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="validate.js"></script>
+    
     </head>
-    <body>
+    <body class="container">
+        <div id='form_msg' style="display:none" role="alert">
+        </div>
         <form name='form' id='form'>
-            <input name="nome" id="form_nome" type="text">
-            <input id="form_email" type="text">
-            <input name="cpf" id="form_cpf" type="text">
-            <input name="cnpj" id="form_cnpj" type="text">
-            <input name="moeda" id="form_moeda" type="number">
-            <input name="valor" id="form_valor" type="number">
+            <label>Nome:</label>
+            <input name="nome" id="form_nome" type="text"><br/>
+            <label>Email:</label>
+            <input id="form_email" type="email"><br/>
+            <label>CPF:</label>
+            <input name="cpf" id="form_cpf" type="text"><br/>
+            <label>CNPJ:</label>
+            <input name="cnpj" id="form_cnpj" type="text"><br/>
+            <label>Moeda:</label>
+            <input name="moeda" id="form_moeda" type="number"><br/>
+            <label>Valor:</label>
+            <input name="valor" id="form_valor" type="number"><br/>
+            <br/>
             <input type="button" type="submit" onclick="validaCampos()" value="Validar">
         </form>
     </body>
